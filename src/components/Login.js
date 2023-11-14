@@ -14,9 +14,10 @@ function Login() {
   });
   const[wrongData,SetWrongData]=useState(false);
   const[showError,setShowError]=useState("");
+  const baseurl="https://backend-resume-ugnu.onrender.com";
   const googleAuth = () => {
     window
-      .open(`${process.env.REACT_APP_BASE_URL}/auth/google`, "_self")
+      .open(`${baseurl}/auth/google`, "_self")
       .then((response) => {
         if (response.status == 200) {
           console.log(response.data);
@@ -30,7 +31,7 @@ function Login() {
     console.log("password " + credentialsForLogin.password);
     try {
       axios
-        .post(`${process.env.REACT_APP_BASE_URL}/login`, credentialsForLogin)
+        .post(`${baseurl}/login`, credentialsForLogin)
         .then((response) => {
           console.log("response" + response);
           if (response.data=="successful") {

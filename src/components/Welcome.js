@@ -10,10 +10,10 @@ function Welcome() {
   const navigate = useNavigate();
   const [credentials, setCredentials] = useState({ email: "", password: "" });
  const[isRegistered, setIsRegistered]=useState(false);
- 
+ const baseurl="https://backend-resume-ugnu.onrender.com";
   const googleAuth = () => {
     window
-      .open(`${process.env.REACT_APP_BASE_URL}/auth/google`, "_self")
+      .open(`${process.env.REACT_APP_baseurl}/auth/google`, "_self")
       .then((response) => {
         if (response.status == 200) {
           console.log(response.data);
@@ -28,7 +28,7 @@ function Welcome() {
     console.log("password " + credentials.password);
     try {
       axios
-        .post(`${process.envREACT_APP_BASE_URL}/register`, credentials)
+        .post(`${process.envREACT_APP_baseurl}/register`, credentials)
         .then((response) => {
           console.log("response+ " + response);
           if (response.data===true) {

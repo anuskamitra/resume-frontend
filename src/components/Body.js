@@ -5,7 +5,7 @@ import Editor from './Editor.js'
 import Resume from './Resume.js'
 import ReactToPrint from 'react-to-print'
 // import {ArrowDown} from 'react-feather'
-console.log(process.env.REACT_APP_BASE_URL)
+const baseurl="https://backend-resume-ugnu.onrender.com";
 export default function Body() {
     const colors=["rgba(0,0,0,0)","rgba(255, 0, 0, 0.09)","rgba(128,128,128,0.1)","rgba(0,128,128,0.1)","rgba(0,0,255,0.2)","rgba(205,179,164,0.4)"];
     const[activeColor,setActiveColor]=useState(colors[0]);
@@ -65,7 +65,7 @@ export default function Body() {
     console.log("in db");
     console.log(JSON.stringify(resumeInfo))
     try {
-      const response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/save-data`, {
+      const response = await fetch(`${baseurl}/api/save-data`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

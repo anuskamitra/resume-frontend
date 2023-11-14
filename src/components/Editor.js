@@ -21,9 +21,10 @@ export default function Editor(props) {
     other:"",
 
   })
+  const baseurl="https://backend-resume-ugnu.onrender.com";
   useEffect(()=>{
     try{
-      axios.get(`${process.env.REACT_APP_BASE_URL}/fetchdata`)
+      axios.get(`${baseurl}/fetchdata`)
       .then(response=>{
             
         let workExpDetails=response.data.workExpDetails;
