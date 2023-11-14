@@ -16,7 +16,7 @@ function Login() {
   const[showError,setShowError]=useState("");
   const googleAuth = () => {
     window
-      .open("http://localhost:8000/auth/google", "_self")
+      .open(`${process.env.REACT_APP_BASE_URL}/auth/google`, "_self")
       .then((response) => {
         if (response.status == 200) {
           console.log(response.data);
@@ -30,7 +30,7 @@ function Login() {
     console.log("password " + credentialsForLogin.password);
     try {
       axios
-        .post("http://localhost:8000/login", credentialsForLogin)
+        .post(`${process.env.REACT_APP_BASE_URL}/login`, credentialsForLogin)
         .then((response) => {
           console.log("response" + response);
           if (response.data=="successful") {

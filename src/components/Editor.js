@@ -8,13 +8,6 @@ export default function Editor(props) {
   let sections = props.sections;
   let information = props.resumeInfo;
 
-  // console.log(sections); //is a object which holds all the seven sections.
-  // console.log(Object.keys(sections));//array that holds the keys of the section.
-  // console.log(sections[Object.keys(sections)[0]]); //The value of the key which is "basic info"
-  // console.log(sections[activeKey])   //same answer as above as Object.keys(sections)[0]=activekey
-  // console.log(sections.basicInfo); //will give the same result as above 
-  // console.log(information[sections.workExp]?.details)
-
   const[sectionTitle,setSectionTitle]=useState(sections[Object.keys(sections)[0]]);
   const [activeKey, setactiveKey] = useState(Object.keys(sections)[0]);
   const[activeDetailIndex,setActiveDetailIndex]=useState(0)
@@ -28,20 +21,10 @@ export default function Editor(props) {
     other:"",
 
   })
-  // console.log(values)
-  // console.log(information)
   useEffect(()=>{
     try{
-      axios.get("http://localhost:8000/fetchdata")
+      axios.get(`${process.env.REACT_APP_BASE_URL}/fetchdata`)
       .then(response=>{
-        //  console.log("response+"+JSON.stringify(response.data));
-        //   console.log("response+"+JSON.stringify(response.data.basicInfoDetail.detail));
-        // console.log("response+"+JSON.stringify(response.data.workExpDetails.details[0]));
-        // console.log("response+"+JSON.stringify(response.data.workExpDetails.details[1]));
-        //     let workExpDetails=response.data.workExpDetails.details[0];
-        //     setValues(response.data.basicInfoDetail.detail);
-        //     console.log(values);
-        //     setValues((prev)=>({...prev,workExpDetails}))
             
         let workExpDetails=response.data.workExpDetails;
         let basicInfoDetail=response.data.basicInfoDetail;
@@ -51,7 +34,6 @@ export default function Editor(props) {
         let summayDetails=response.data.summayDetails;
         let otherDetails=response.data.otherDetails
 
-             console.log(workExpDetails)
 
             setValues((prev)=>({...prev,workExp:[...workExpDetails.details],basicInfo:{...basicInfoDetail.detail},project:[...projectDetails.details],education:[...educationDetails.details],other:otherDetails.detail,summary:summayDetails.detail,achievements:[...achievementDetails.points]}));
             props.setInformation(prev=>({
@@ -60,9 +42,7 @@ export default function Editor(props) {
                 ...prev[sections.workExp],
                 details:[...workExpDetails.details],
                 sectionTitle:workExpDetails.sectionTitle
-               
-                
-                
+                      
               },
               [sections.basicInfo]:{
                 ...prev[sections.basicInfo],
@@ -105,13 +85,6 @@ export default function Editor(props) {
               }
               
             }))
-          //   console.log(values.project[activeDetailIndex])
-          //   console.log(values.workExp);
-          //   console.log(information)
-          //   console.log(JSON.stringify(information))
-
-          //  console.log("values "+JSON.stringify(values))
-          // setValues(response.data)    
       })
     }catch(err){
       console.log(err);

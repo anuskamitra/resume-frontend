@@ -13,9 +13,7 @@ function App() {
           <Route path="/login" element={<Login/>}/>
           <Route path="/resume" element={<Header/>}/>
 
-        </Routes>
-     
-      
+        </Routes>     
       </Router>
 
      

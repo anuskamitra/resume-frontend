@@ -4,9 +4,8 @@ import Arrow from '../assets/arrow-down.svg'
 import Editor from './Editor.js'
 import Resume from './Resume.js'
 import ReactToPrint from 'react-to-print'
-import axios from 'axios'
 // import {ArrowDown} from 'react-feather'
-
+console.log(process.env.REACT_APP_BASE_URL)
 export default function Body() {
     const colors=["rgba(0,0,0,0)","rgba(255, 0, 0, 0.09)","rgba(128,128,128,0.1)","rgba(0,128,128,0.1)","rgba(0,0,255,0.2)","rgba(205,179,164,0.4)"];
     const[activeColor,setActiveColor]=useState(colors[0]);
@@ -66,7 +65,7 @@ export default function Body() {
     console.log("in db");
     console.log(JSON.stringify(resumeInfo))
     try {
-      const response = await fetch('http://localhost:8000/api/save-data', {
+      const response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/save-data`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -84,10 +83,6 @@ export default function Body() {
       console.error('Network error:', error);
     }
   }
-    // console.log("ref"+resumeRef);
-    // for(let key in resumeRef){
-    //    console.log(key)
-    // }
   return (
     <div className={Styles.container}>
         <p className={Styles.heading}>
@@ -115,7 +110,6 @@ export default function Body() {
 
           content={() => resumeRef.current}
         
-          // </div>
         />
        
         </div>

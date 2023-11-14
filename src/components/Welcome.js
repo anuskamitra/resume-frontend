@@ -13,7 +13,7 @@ function Welcome() {
  
   const googleAuth = () => {
     window
-      .open("http://localhost:8000/auth/google", "_self")
+      .open(`${process.env.REACT_APP_BASE_URL}/auth/google`, "_self")
       .then((response) => {
         if (response.status == 200) {
           console.log(response.data);
@@ -28,7 +28,7 @@ function Welcome() {
     console.log("password " + credentials.password);
     try {
       axios
-        .post("http://localhost:8000/register", credentials)
+        .post(`${process.envREACT_APP_BASE_URL}/register`, credentials)
         .then((response) => {
           console.log("response+ " + response);
           if (response.data===true) {
