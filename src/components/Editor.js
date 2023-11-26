@@ -34,8 +34,6 @@ export default function Editor(props) {
         let achievementDetails=response.data.achievementDetails;
         let summayDetails=response.data.summayDetails;
         let otherDetails=response.data.otherDetails
-
-
             setValues((prev)=>({...prev,workExp:[...workExpDetails.details],basicInfo:{...basicInfoDetail.detail},project:[...projectDetails.details],education:[...educationDetails.details],other:otherDetails.detail,summary:summayDetails.detail,achievements:[...achievementDetails.points]}));
             props.setInformation(prev=>({
               ...prev,
