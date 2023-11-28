@@ -1,5 +1,5 @@
 [[redirects]]
-  from = "/auth/*"
+  from = "/api/*"
   to = "https://backend-resume-ugnu.onrender.com/:splat"
   status = 200
   force = true
