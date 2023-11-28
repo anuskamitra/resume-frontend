@@ -1,4 +1,11 @@
 [[redirects]]
+  from = "/auth/*"
+  to = "https://backend-resume-ugnu.onrender.com/:splat"
+  status = 200
+  force = true
+  headers = { Access-Control-Allow-Origin = "*", Access-Control-Allow-Credentials = "true" }
+
+[[redirects]]
 from="/*"
 to="/index.html"
 status=200
